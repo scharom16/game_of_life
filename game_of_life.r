@@ -58,3 +58,25 @@ tick <- function(world, neighborhood_size) {
     }
     new_world
 }
+clc <- function() cat(rep("\n", 50))
+
+visualize <- function(world, iteration){
+    clc() 
+    print(sprintf('Iteration: %s', iteration))
+    print(sprintf('Alive: %s',sum(world)))
+    print(world)
+}
+
+init <- function(max_iterations, options) {
+    iteration = 0
+    world  = do.call(create_world,options)
+    visualize(world, iteration)
+    while(iteration < max_iterations) {
+        world = tick(world, 1)
+        visualize(world,iteration)
+        iteration = iteration + 1
+         Sys.sleep(0.5)
+    }
+}
+
+init(11, options)
