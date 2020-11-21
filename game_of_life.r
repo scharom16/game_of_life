@@ -1,6 +1,7 @@
 options <- commandArgs(trailingOnly = TRUE)
 options = as.double(unlist(options))
 options = as.list(options)
+library(shiny)
 
 create_world <- function(length, width, initial_living_cell_ratio) {
     world = matrix(0, nrow = length, ncol = width)
@@ -78,5 +79,3 @@ init <- function(max_iterations, options) {
          Sys.sleep(0.5)
     }
 }
-
-init(11, options)
