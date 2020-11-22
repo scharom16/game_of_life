@@ -8,10 +8,10 @@ fluidPage(
             textInput("text", h4("Rulestring(B/S):"), value = '3/2'),
             numericInput("width", h4("Width:"),value = 100),
             numericInput("height", h4("Height:"), value = 100),
-            sliderInput("living_cell_ratio", h4('Initial (living) cell ratio:'), min = 0, max=1, value=0.8)
+            sliderInput("livingCellRatio", h4('Initial (living) cell ratio:'), min = 0, max=1, value=0.4)
         ),
         mainPanel(
-            imageOutput('game_of_life_state', width=1000, height=1000)
+            imageOutput('gameOfLifeState')
         )
     )
 )

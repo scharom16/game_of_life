@@ -6,18 +6,23 @@ create_world <- function(height, width, living_cell_ratio) {
 }
 
 function(input, output, session) {
-    output$game_of_life_state <- renderImage({
+    output$gameOfLifeState <- renderImage({
         height = input$height
         width  = input$width
-        living_cell_ratio = input$living_cell_ratio
+        uiwidth  <- session$clientData$output_gameOfLifeState_width
+        pixelratio <- session$clientData$pixelratio
+        livingCellRatio = input$livingCellRatio
         outfile = tempfile(fileext = ".png")
-        pic = create_world(height, height, living_cell_ratio)
-        writePNG(pic, target = outfile)
+        pic = create_world(height, height, livingCellRatio)
 
+        png(outfile, width=uiwidth, height=uiwidth)
+        image(pic, col=gray.colors(2), xaxt='n', yaxt='n')
+        dev.off()
+        # writePNG(pic, target = outfile, dpi=100000000000)
         list(src = outfile,
          contentType = "image/png",
-         width = width,
-         height = height,
+         width = uiwidth,
+         height = uiwidth,
          alt = "Game of life current state")
     }, deleteFile=TRUE)
 }
