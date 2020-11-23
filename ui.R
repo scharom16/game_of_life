@@ -2,12 +2,13 @@ fluidPage(
     tags$head(tags$script(src = "message-handler.js")),
     HTML("<link rel=\"icon\" type=\"image/gif\" href=\"glider.gif\" />"),
     title = 'Game of life',
-    titlePanel(h1('Game of life',align = 'center')),
+    titlePanel(h1('Game of life', align = 'center'),h2('hello')),
+    
     sidebarLayout(
         position = "right",
         sidebarPanel(
             sliderInput("neighborhoodSize", h4("Neigbourhood:"), min = 1, max=4,value = 1),
-            helpText('Defines the size of neigbourhood around a cell.'),
+            helpText('Size of the neigbourhood around a cell.'),
             sliderInput("birth", h4("Birth:"), min = 2, max=7,value = 3),
             helpText('Amount of neigbours needed to create a new cell.'),
             sliderInput("survival", h4("Survival:"), min = 1, max=5,value = 2),
@@ -25,5 +26,6 @@ fluidPage(
         mainPanel(
             imageOutput('gameOfLifeState')
         )
-    )
+    ),
+    tags$a(href="https://github.com/scharom16/game_of_life/", "Find me on github.")
 )
